@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+</head>
+<body>
+
+<form onsubmit="return validateForm()"  action="prac.html">
+    <fieldset>
+        <legend>Registration Form</legend>
+    <label>Student ID:</label><br>
+    <input type="text" id="studentId"><br><br>
+
+    <label>Name:</label><br>
+    <input type="text" id="name"><br><br>
+
+    <label >Email:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="tel" id="phoneNumber" ><br><br>
+
+    <label >Password:</label><br>
+    <input type="password" id="password"><br><br>
+
+    <label >Confirm Password:</label><br>
+    <input type="password" id="confirmPassword"><br><br>
+
+    <input type="submit" >
+    </fieldset>
+</form>
+
+<script>
+function validateForm() {
+    var studentId = document.getElementById('studentId').value;
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (studentId == '' || name == '' || email == '' || phoneNumber == '' || password == '' || confirmPassword == '') {
+    alert('All fields are required');
+    return false;
+    }
+
+    if (!/^[A-Z]/.test(password)) {
+    alert('Password must start with a capital letter');
+    return false;
+    }
+
+    if (!/\d/.test(password)) {
+    alert('Password must contain at least one number');
+    return false;
+    }
+
+    if (!/\W/.test(password)) {
+    alert('Password must contain at least one special character');
+    return false;
+}
+    if (password.length < 8) {
+    alert('Password must be at least 8 characters long');
+    return false;
+    }
+
+    if (isNaN(phoneNumber)) {
+    alert('Phone Number must contain only numbers');
+    return false;
+    }
+
+    if (password !== confirmPassword) {
+    alert('Passwords do not match');
+    return false;
+    }
+    return true;
+}
+</script>
+</body>
+</html>
